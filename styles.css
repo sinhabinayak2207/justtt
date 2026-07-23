@@ -2,7 +2,6 @@
   --ink: #050505;
   --white: #ffffff;
   --muted: #737373;
-  --line: rgba(255, 95, 67, 0.38);
   --soft: #f3f3f1;
   --tile: #eeeeec;
   --orange: #ff6848;
@@ -48,42 +47,6 @@ button {
 img,
 svg {
   display: block;
-}
-
-.grid-lines {
-  position: fixed;
-  inset: 0;
-  z-index: 15;
-  pointer-events: none;
-}
-
-.grid-lines span {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: var(--line);
-  opacity: 0.72;
-}
-
-.grid-lines span:nth-child(1) {
-  left: 5.55%;
-}
-
-.grid-lines span:nth-child(2) {
-  left: 27.78%;
-}
-
-.grid-lines span:nth-child(3) {
-  left: 50%;
-}
-
-.grid-lines span:nth-child(4) {
-  left: 72.22%;
-}
-
-.grid-lines span:nth-child(5) {
-  left: 94.44%;
 }
 
 .site-chrome {
@@ -510,6 +473,7 @@ svg {
   height: 435px;
   margin: 94px 0 0;
   overflow: hidden;
+  will-change: transform;
 }
 
 .wide-photo img,
@@ -518,6 +482,13 @@ svg {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.wide-photo img,
+.buyer-photo img {
+  transform: scale(1.12) translate3d(0, calc(var(--parallax, 0) * -1px), 0);
+  transition: transform 120ms linear;
+  will-change: transform;
 }
 
 .step-list,
@@ -586,17 +557,18 @@ svg {
 .service-tile {
   position: relative;
   display: grid;
+  --base-y: 0px;
   min-height: 270px;
   align-content: end;
   gap: 18px;
   grid-column: span 2;
   padding: 32px 32px 28px;
   background: var(--tile);
-  transition: transform 220ms ease, background 220ms ease;
+  transition: opacity 760ms cubic-bezier(0.16, 1, 0.3, 1), transform 860ms cubic-bezier(0.16, 1, 0.3, 1), background 220ms ease;
 }
 
 .service-tile:nth-child(even) {
-  transform: translateY(80px);
+  --base-y: 80px;
 }
 
 .service-tile:hover {
@@ -749,6 +721,7 @@ svg {
   height: 340px;
   margin: -54px 0 0;
   overflow: hidden;
+  will-change: transform;
 }
 
 .buyer-steps {
@@ -812,17 +785,18 @@ svg {
 }
 
 .agent-card {
+  --base-y: 0px;
   overflow: hidden;
   color: var(--white);
   background: #121212;
 }
 
 .agent-card:nth-child(2) {
-  transform: translateY(64px);
+  --base-y: 64px;
 }
 
 .agent-card:nth-child(3) {
-  transform: translateY(128px);
+  --base-y: 128px;
 }
 
 .agent-card img {
@@ -942,6 +916,11 @@ svg {
   text-align: center;
 }
 
+.get-started__content > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .get-started .section-label {
   color: rgba(255, 255, 255, 0.76);
 }
@@ -994,14 +973,37 @@ svg {
 }
 
 .reveal {
+  --reveal-y: 74px;
   opacity: 0;
-  transform: translateY(42px);
-  transition: opacity 680ms ease, transform 680ms ease;
+  transform: translate3d(0, var(--reveal-y), 0);
+  transition: opacity 820ms cubic-bezier(0.16, 1, 0.3, 1), transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.is-visible {
+  --reveal-y: 0px;
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, var(--reveal-y), 0);
+}
+
+.service-tile.reveal,
+.agent-card.reveal {
+  transform: translate3d(0, calc(var(--base-y, 0px) + var(--reveal-y, 74px)), 0);
+}
+
+.service-tile.reveal.is-visible,
+.agent-card.reveal.is-visible {
+  transform: translate3d(0, calc(var(--base-y, 0px) + var(--reveal-y, 0px)), 0);
+}
+
+.section-label.reveal {
+  --reveal-y: 34px;
+}
+
+.mega-heading.reveal,
+.team-copy.reveal,
+.get-started__content.reveal {
+  --reveal-y: 105px;
 }
 
 @media (max-width: 1000px) {
@@ -1088,8 +1090,8 @@ svg {
 
   .service-tile,
   .service-tile:nth-child(even) {
+    --base-y: 0px;
     grid-column: 1;
-    transform: none;
   }
 
   .market-card {
@@ -1106,7 +1108,7 @@ svg {
 
   .agent-card:nth-child(2),
   .agent-card:nth-child(3) {
-    transform: none;
+    --base-y: 0px;
   }
 
   .quote-stage {
@@ -1126,11 +1128,6 @@ svg {
 }
 
 @media (max-width: 640px) {
-  .grid-lines span:nth-child(2),
-  .grid-lines span:nth-child(4) {
-    display: none;
-  }
-
   .site-chrome {
     top: 12px;
     right: 12px;
@@ -1271,7 +1268,7 @@ svg {
   }
 
   .get-started h2 {
-    font-size: 3.35rem;
+    font-size: clamp(2.35rem, 11vw, 2.85rem);
   }
 
   .footer-panel {

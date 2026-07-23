@@ -49,14 +49,14 @@ const updateScrollMotion = () => {
   header?.classList.toggle("is-light", !isDarkSection);
 
   if (heroTitle) {
-    heroTitle.style.setProperty("--hero-title-y", String(heroProgress * 150));
+    heroTitle.style.setProperty("--hero-title-y", String(heroProgress * 230));
   }
 
   parallaxItems.forEach((item) => {
     const rect = item.getBoundingClientRect();
     const speed = Number(item.dataset.speed || 0);
     const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-    item.style.setProperty("--parallax", String(centerOffset * speed));
+    item.style.setProperty("--parallax", String(Math.round(centerOffset * speed)));
   });
 };
 
@@ -81,13 +81,16 @@ if (reducedMotion) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 } else {
   const revealVisibleItems = () => {
+    const revealLine = window.scrollY + window.innerHeight * 0.84;
+
     revealItems.forEach((item) => {
       if (item.classList.contains("is-visible")) {
         return;
       }
 
       const rect = item.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.88 && rect.bottom > 0) {
+      const itemTop = rect.top + window.scrollY;
+      if (itemTop < revealLine) {
         item.classList.add("is-visible");
       }
     });

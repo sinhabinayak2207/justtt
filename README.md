@@ -8,4 +8,4 @@ Standalone single-page real estate homepage.
 - Build command: leave empty
 - Output directory: `.`
 
-Main file: `index.html`
+Single static homepage.
