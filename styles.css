@@ -305,7 +305,7 @@ svg {
   padding: 0 var(--site-x) 42px;
 }
 
-.hero-title {
+.h1-huge {
   position: absolute;
   right: var(--site-x);
   bottom: clamp(380px, 36vh, 560px);
@@ -317,7 +317,7 @@ svg {
   line-height: 0.76;
   letter-spacing: 0;
   text-align: center;
-  transform: translateY(calc(var(--hero-title-y, 0) * 1px));
+  will-change: transform, clip-path;
 }
 
 .hero-copy {
@@ -340,10 +340,6 @@ svg {
 .hero .reveal {
   opacity: 1;
   transform: none;
-}
-
-.hero-title.reveal {
-  transform: translateY(calc(var(--hero-title-y, 0) * 1px));
 }
 
 .panel-white {
@@ -1025,7 +1021,7 @@ svg {
     padding-bottom: 0;
   }
 
-  .hero-title {
+  .h1-huge {
     right: var(--site-x);
     bottom: 218px;
     left: var(--site-x);

@@ -4,7 +4,7 @@ const menuOpen = document.querySelector("[data-menu-open]");
 const menuClose = document.querySelector("[data-menu-close]");
 const menuLinks = document.querySelectorAll("[data-menu-link]");
 const hero = document.querySelector("[data-hero]");
-const heroTitle = document.querySelector("[data-hero-title]");
+const heroTitle = document.querySelector('[data-scroll-h1="doorly"]');
 const revealItems = document.querySelectorAll(".reveal");
 const counters = document.querySelectorAll("[data-count]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
@@ -49,7 +49,12 @@ const updateScrollMotion = () => {
   header?.classList.toggle("is-light", !isDarkSection);
 
   if (heroTitle) {
-    heroTitle.style.setProperty("--hero-title-y", String(heroProgress * 230));
+    const translateY = Math.round(heroProgress * 560 * 1000) / 1000;
+    const scale = Math.max(0.28, Math.round((1 - heroProgress * 0.86) * 10000) / 10000);
+    heroTitle.style.transform = heroProgress <= 0.001
+      ? "translate3d(0px, 0px, 0px)"
+      : `translate3d(0px, ${translateY}px, 0px) scale(${scale}, ${scale})`;
+    heroTitle.style.clipPath = "inset(0% 0px 0px)";
   }
 
   parallaxItems.forEach((item) => {
