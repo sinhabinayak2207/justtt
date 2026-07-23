@@ -2,3 +2,7 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
 /* The Webflow runtime injects a "Made in Webflow" badge on load. It belongs to the
    original webflow.io hosting, not to the design -- delete this rule to bring it back. */
 .w-webflow-badge{display:none!important}
+
+/* The navbar used to be MENU | DOORLY | Buy Template, spaced apart. With both
+   buttons removed the logo is the only child, so center it explicitly. */
+.nav_container{justify-content:center}

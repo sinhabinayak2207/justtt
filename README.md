@@ -32,8 +32,11 @@ Webflow runtime needs a real HTTP origin.
 
 ## Notes
 
-- Only the home page exists here. Internal links (About, Contact, Blogs, the nav menu) point
-  at `#`, since those pages were not mirrored.
+- Only the home page exists here. Remaining internal links point at `#`, since those pages
+  were not mirrored.
+- Removed from the original: the MENU trigger (and the dropdown panel it opened), the
+  "Buy Template" button, and the orange vertical rules overlaying the page. The navbar is
+  now just the centered logo — see the two rules at the bottom of `styles.css`.
 - The "Made in Webflow" badge the original injects is hidden — see the bottom of `styles.css`
   to restore it.
 - Doorly is a commercial template sold via [temlis.com](https://www.temlis.com/). This copy is

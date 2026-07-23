@@ -88,22 +88,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     mm.add('(min-width: 768px)', () => {
       const nav      = document.querySelector('.nav');
-      const stripes  = document.querySelectorAll('.stripes_wrapper .stripes');
       const bg       = document.querySelector('.section_home .home-background');
       const gradient = document.querySelector('.section_home .hero_gradient');
       const h1       = document.querySelector('.section_home .h1-huge');
       const desc     = document.querySelector('.section_home .max-description');
       const cta      = document.querySelector('.section_home .home_layout-content > div:last-child');
 
-      if (!nav || !stripes.length || !bg || !gradient || !h1 || !desc || !cta) {
-        console.warn('[doorly hero-load] missing element', { nav, stripes: stripes.length, bg, gradient, h1, desc, cta });
+      if (!nav || !bg || !gradient || !h1 || !desc || !cta) {
+        console.warn('[doorly hero-load] missing element', { nav, bg, gradient, h1, desc, cta });
         return;
       }
 
       // Initial states (would normally be CSS; applied via GSAP so the embed
       // stays within the "GSAP custom code" marketplace exception).
       gsap.set(nav,      { opacity: 0, y: -60 });
-      gsap.set(stripes,  { scaleY: 0, transformOrigin: 'top' });
       gsap.set(bg,       { scale: 1.12 });
       gsap.set(gradient, { opacity: 0 });
       gsap.set(h1,       { clipPath: 'inset(100% 0 0 0)' });
@@ -114,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       tl
         .to(nav,      { y: 0, opacity: 1, duration: 0.9 }, 0)
-        .to(stripes,  { scaleY: 1, duration: 1.0, stagger: 0.08, ease: 'power3.out' }, 0)
         .to(bg,       { scale: 1, duration: 1.6, ease: 'power3.out' }, 0)
         .to(gradient, { opacity: 1, duration: 1.2 }, 0.2)
         .to(h1,       { clipPath: 'inset(0% 0 0 0)', duration: 1.1, ease: 'expo.out' }, 0.5)
@@ -125,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // the hero returns to its static template state on mobile.
       return () => {
         tl.kill();
-        gsap.set([nav, ...stripes, bg, gradient, h1, desc, cta], { clearProps: 'all' });
+        gsap.set([nav, bg, gradient, h1, desc, cta], { clearProps: 'all' });
       };
     });
   });
