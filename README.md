@@ -1,6 +1,6 @@
-# Doorly Properties
+# Doorly Real Estate
 
-Standalone static real estate agency landing page.
+Standalone single-page real estate homepage.
 
 ## Deploy on Vercel
 

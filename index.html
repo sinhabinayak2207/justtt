@@ -5,340 +5,368 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Doorly Properties is a modern real estate advisory site for buyers, sellers, investors, valuations, leasing, and consultations."
+      content="Doorly is a single-page real estate advisory homepage for buyers, sellers, investors, leasing, valuation, and consultations."
     />
-    <meta property="og:title" content="Doorly Properties" />
+    <meta property="og:title" content="Doorly Real Estate" />
     <meta
       property="og:description"
-      content="Client-first real estate guidance for buying, selling, and investing."
+      content="A modern real estate homepage with buyer, seller, service, team, testimonial, and consultation sections."
     />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
-      content="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85"
+      content="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=85"
     />
-    <title>Doorly Properties</title>
+    <title>Doorly Real Estate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Doorly Properties home">
-        <span class="brand-symbol">D</span>
-        <span>DOORLY</span>
+    <div class="grid-lines" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <header class="site-chrome" data-header>
+      <button class="menu-trigger" type="button" data-menu-open aria-label="Open menu">
+        <span>MENU</span>
+        <i aria-hidden="true"></i>
+      </button>
+      <a class="floating-logo" href="#top" aria-label="Doorly home">DOORLY</a>
+      <a class="top-button" href="#contact">
+        <span>CONTACT US</span>
+        <b aria-hidden="true">-&gt;</b>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#buyers">Buyers</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a class="header-action" href="#contact">Contact Us</a>
     </header>
 
+    <aside class="menu-panel" data-menu aria-hidden="true">
+      <div class="menu-panel__bar">
+        <button class="menu-close" type="button" data-menu-close aria-label="Close menu">
+          <span>CLOSE</span>
+          <i aria-hidden="true"></i>
+        </button>
+        <a href="#top" data-menu-link>DOORLY</a>
+      </div>
+      <nav class="menu-panel__grid" aria-label="Homepage sections">
+        <a href="#top" data-menu-link>
+          <span>01</span>
+          Home
+        </a>
+        <a href="#about" data-menu-link>
+          <span>02</span>
+          About
+        </a>
+        <a href="#sellers" data-menu-link>
+          <span>03</span>
+          Sellers
+        </a>
+        <a href="#services" data-menu-link>
+          <span>04</span>
+          Services
+        </a>
+        <a href="#buyers" data-menu-link>
+          <span>05</span>
+          Buyers
+        </a>
+        <a href="#team" data-menu-link>
+          <span>06</span>
+          Team
+        </a>
+        <a href="#contact" data-menu-link>
+          <span>07</span>
+          Contact
+        </a>
+      </nav>
+    </aside>
+
     <main id="top">
-      <section class="hero section-shell">
-        <div class="hero-copy">
-          <p class="eyebrow reveal">[ Real Estate Advisory ]</p>
-          <h1 class="reveal">DOORLY</h1>
-          <p class="hero-text reveal">
-            Intelligent property guidance for people buying, selling, leasing,
-            or investing with confidence.
+      <section class="hero" data-hero data-dark-section>
+        <div class="hero-bg" data-parallax data-speed="-0.18" aria-hidden="true"></div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="hero-content">
+          <h1 class="hero-title reveal" data-hero-title>DOORLY</h1>
+          <p class="hero-copy reveal">
+            Property guidance for family homes, private estates, apartments, and
+            investment addresses - managed with clear strategy from first visit
+            to final signature.
           </p>
-          <div class="hero-actions reveal">
-            <a class="button-primary" href="#contact">Book Consultation</a>
-            <a class="button-secondary" href="#services">View Services</a>
-          </div>
-        </div>
-        <figure class="hero-media reveal" data-float>
-          <img
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85"
-            alt="Modern two-story home with warm exterior lights and a landscaped driveway"
-            width="900"
-            height="1100"
-          />
-          <figcaption>
-            <strong>$42M</strong>
-            <span>Property value guided across residential and investment deals.</span>
-          </figcaption>
-        </figure>
-      </section>
-
-      <section class="ticker" aria-label="Agency strengths">
-        <div class="ticker-track">
-          <span>Market Strategy</span>
-          <span>Buyer Representation</span>
-          <span>Seller Advisory</span>
-          <span>Leasing Support</span>
-          <span>Investment Planning</span>
-          <span>Valuation Reports</span>
-          <span>Market Strategy</span>
-          <span>Buyer Representation</span>
-          <span>Seller Advisory</span>
-          <span>Leasing Support</span>
+          <a class="hero-button reveal" href="#contact">
+            <span>CONTACT US</span>
+            <b aria-hidden="true">-&gt;</b>
+          </a>
         </div>
       </section>
 
-      <section class="about section-shell" id="about">
-        <div class="section-kicker reveal">[ About Us ]</div>
-        <div class="split-layout">
-          <div class="copy-block reveal">
-            <h2>A precise real estate team for high-stakes decisions.</h2>
-            <p>
-              Doorly helps clients move through the market with clear pricing,
-              thoughtful negotiation, and dependable execution from first review
-              to final signature.
-            </p>
+      <section class="about panel-white" id="about">
+        <div class="section-grid">
+          <div class="section-label reveal">[ ABOUT US ]</div>
+          <div class="about-copy reveal">
+            <h2>
+              A real estate agency built for calm decisions, sharp marketing,
+              and a transparent path through the market.
+            </h2>
+            <div class="metric-row">
+              <div>
+                <strong>$<span data-count="30">0</span><em>M</em></strong>
+                <p>Property value</p>
+              </div>
+              <div>
+                <strong><span data-count="120">0</span><em>+</em></strong>
+                <p>Projects complete</p>
+              </div>
+            </div>
           </div>
-          <div class="stats-grid reveal" aria-label="Performance statistics">
-            <div>
-              <strong data-count="12">0</strong>
-              <span>Years advising clients</span>
-            </div>
-            <div>
-              <strong data-count="320">0</strong>
-              <span>Completed transactions</span>
-            </div>
-            <div>
-              <strong data-count="98">0</strong>
-              <span>Client satisfaction score</span>
-            </div>
+          <div class="partner-wall reveal" aria-label="Partner marks">
+            <span><i>u</i> Umbra</span>
+            <span><i>n</i> Network</span>
+            <span><i>f</i> Flash</span>
+            <span><i>c</i> Cactus</span>
+            <span><i>v</i> Vision</span>
+            <span><i>g</i> Greenish</span>
+            <span><i>n</i> Network</span>
+            <span><i>u</i> Umbra</span>
           </div>
         </div>
       </section>
 
-      <section class="feature section-shell" id="sellers">
-        <div class="feature-copy reveal">
-          <p class="section-kicker">[ For Sellers ]</p>
-          <h2>Launch your property with pricing, exposure, and momentum.</h2>
-          <p>
-            We prepare every listing with a focused plan: market position,
-            buyer targeting, launch media, private feedback, negotiation, and a
-            closing path that stays organized.
-          </p>
-          <ol class="process-list">
+      <section class="sellers panel-white" id="sellers">
+        <div class="section-grid sellers-grid">
+          <p class="section-label reveal">[ FOR SELLERS ]</p>
+          <h2 class="section-statement reveal">
+            Selling well needs timing, presentation, pricing discipline, and
+            enough exposure to attract the right qualified buyers.
+          </h2>
+          <figure class="wide-photo reveal" data-parallax data-speed="0.08">
+            <img
+              src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=85"
+              alt="Glass corner living room looking over green hills"
+              width="980"
+              height="680"
+            />
+          </figure>
+          <ol class="step-list reveal">
             <li>
-              <span>01</span>
-              <p>Price with live comparable data and neighborhood demand.</p>
+              <span>[1]</span>
+              <p>Position the property with current market data and a focused launch plan.</p>
             </li>
             <li>
-              <span>02</span>
-              <p>Promote with photography, campaign copy, and buyer outreach.</p>
+              <span>[2]</span>
+              <p>Use strong media, buyer outreach, and clear weekly feedback.</p>
             </li>
             <li>
-              <span>03</span>
-              <p>Negotiate every term with calm, documented guidance.</p>
+              <span>[3]</span>
+              <p>Keep negotiation, conditions, and closing details organized.</p>
             </li>
           </ol>
         </div>
-        <div class="feature-image reveal">
-          <img
-            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85"
-            alt="Contemporary living room with glass walls and mountain views"
-            width="900"
-            height="780"
-          />
-        </div>
       </section>
 
-      <section class="services section-shell" id="services">
-        <div class="section-heading reveal">
-          <p class="section-kicker">[ Services ]</p>
-          <h2>Specialized support for every property move.</h2>
-        </div>
-        <div class="service-grid">
-          <article class="service-card reveal">
-            <span>01</span>
+      <section class="services panel-white" id="services">
+        <p class="section-label services-label reveal">[ SERVICES ]</p>
+        <h2 class="mega-heading reveal">EXCEPTIONAL REAL ESTATE SERVICES</h2>
+        <div class="service-ladder">
+          <article class="service-tile reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M7 8h10v8H7zM4 16h16v3H4z" /></svg>
+            </div>
+            <a href="#contact" aria-label="Property Investment inquiry">-&gt;</a>
             <h3>Property Investment</h3>
-            <p>Shortlist opportunities, compare returns, and understand risk before you commit.</p>
+            <p>Compare opportunities, numbers, holding plans, and resale strategy.</p>
           </article>
-          <article class="service-card reveal">
-            <span>02</span>
+          <article class="service-tile reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5h16v5H4zM4 14h7v5H4zM13 14h7v5h-7z" /></svg>
+            </div>
+            <a href="#contact" aria-label="Property Leasing inquiry">-&gt;</a>
             <h3>Property Leasing</h3>
-            <p>Connect with qualified renters and lease terms designed to protect asset value.</p>
+            <p>Match owners and tenants with practical lease terms and screening.</p>
           </article>
-          <article class="service-card reveal">
-            <span>03</span>
+          <article class="service-tile reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4zM10 20v-6h4v6" /></svg>
+            </div>
+            <a href="#contact" aria-label="Property Valuation inquiry">-&gt;</a>
             <h3>Property Valuation</h3>
-            <p>Receive a practical view of market value using location trends and recent sales.</p>
+            <p>Understand value using recent sales, location data, and buyer demand.</p>
           </article>
-          <article class="service-card reveal">
-            <span>04</span>
+          <article class="service-tile reveal">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM17 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a6 6 0 0 1 10 0M12 21a6 6 0 0 1 10 0" /></svg>
+            </div>
+            <a href="#contact" aria-label="Real Estate Consultation inquiry">-&gt;</a>
             <h3>Real Estate Consultation</h3>
-            <p>Get a focused plan for buying, selling, relocating, or building a portfolio.</p>
+            <p>Build a clear plan for buying, selling, relocating, or investing.</p>
           </article>
         </div>
       </section>
 
-      <section class="market-band">
-        <div class="section-shell band-inner">
-          <h2 class="reveal">Leading with data, local insight, and client-first execution.</h2>
-          <a class="button-light reveal" href="#contact">Start a Plan</a>
+      <section class="market-callout" id="market" data-dark-section>
+        <div class="market-bg" data-parallax data-speed="-0.12" aria-hidden="true"></div>
+        <div class="market-card reveal">
+          <h2>LEADING THE MARKET WITH A CLIENT-FIRST FOCUS</h2>
+          <a href="#contact">
+            <span>CONTACT</span>
+            <b aria-hidden="true">-&gt;</b>
+          </a>
         </div>
       </section>
 
-      <section class="feature feature-reverse section-shell" id="buyers">
-        <div class="feature-image reveal">
-          <img
-            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1400&q=85"
-            alt="White house with a bright yard and clean front path"
-            width="900"
-            height="780"
-          />
-        </div>
-        <div class="feature-copy reveal">
-          <p class="section-kicker">[ For Buyers ]</p>
-          <h2>Search with sharper context and fewer wasted showings.</h2>
-          <p>
-            We help buyers compare homes, neighborhoods, lending details, and
-            offer strategy so each step feels informed instead of rushed.
-          </p>
-          <ol class="process-list">
+      <section class="buyers panel-white" id="buyers">
+        <div class="section-grid buyers-grid">
+          <p class="section-label reveal">[ FOR BUYERS ]</p>
+          <div class="buyer-copy reveal">
+            <h2>
+              <span>Finding the right home should feel informed,</span>
+              <span>focused, and exciting - not rushed.</span>
+            </h2>
+          </div>
+          <figure class="buyer-photo reveal" data-parallax data-speed="0.06">
+            <img
+              src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1600&q=85"
+              alt="Minimal concrete home with wood details and a sunny entrance"
+              width="980"
+              height="650"
+            />
+          </figure>
+          <ol class="buyer-steps reveal">
             <li>
-              <span>01</span>
-              <p>Define the target property, budget, and non-negotiables.</p>
+              <span>[1]</span>
+              <p>Refine budget, neighborhoods, timelines, and non-negotiables.</p>
             </li>
             <li>
-              <span>02</span>
-              <p>Tour with context on value, condition, resale, and timing.</p>
+              <span>[2]</span>
+              <p>Tour homes with context on condition, value, and resale.</p>
             </li>
             <li>
-              <span>03</span>
-              <p>Make offers backed by terms that match your actual position.</p>
+              <span>[3]</span>
+              <p>Move with a clean offer plan when the right property appears.</p>
             </li>
           </ol>
         </div>
       </section>
 
-      <section class="team section-shell" id="team">
-        <div class="section-heading reveal">
-          <p class="section-kicker">[ Our Team ]</p>
-          <h2>Agents who keep the process clear.</h2>
-        </div>
-        <div class="team-grid">
-          <article class="agent-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=700&q=85"
-              alt="Portrait of agent James Hale"
-              width="540"
-              height="650"
-            />
-            <h3>James Hale</h3>
-            <p>Principal Advisor</p>
-          </article>
-          <article class="agent-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=700&q=85"
-              alt="Portrait of agent Maya Stone"
-              width="540"
-              height="650"
-            />
-            <h3>Maya Stone</h3>
-            <p>Listing Strategist</p>
-          </article>
-          <article class="agent-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=85"
-              alt="Portrait of agent Noah Lane"
-              width="540"
-              height="650"
-            />
-            <h3>Noah Lane</h3>
-            <p>Buyer Specialist</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="testimonials section-shell" aria-label="Client testimonials">
-        <div class="testimonial-panel reveal">
-          <div>
-            <p class="section-kicker">[ Client Notes ]</p>
-            <h2>Thoughtful guidance from first conversation to closing day.</h2>
+      <section class="team-panel" id="team" data-dark-section>
+        <div class="team-layout">
+          <div class="team-copy reveal">
+            <p class="section-label">[ OUR TEAM ]</p>
+            <h2>AGENTS WHO GO FURTHER FOR YOU.</h2>
+            <a class="plain-button" href="#contact">
+              <span>LEARN MORE</span>
+              <b aria-hidden="true">-&gt;</b>
+            </a>
           </div>
-          <div class="quote-slider" data-slider>
-            <article class="quote is-active">
-              <p>
-                "Doorly made the sale feel organized from day one. We knew what
-                mattered, what to ignore, and how to respond when offers came in."
-              </p>
-              <span>Priya Mehta, Seller</span>
+          <div class="agent-track">
+            <article class="agent-card reveal">
+              <img
+                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85"
+                alt="Portrait of James Vail"
+                width="620"
+                height="760"
+              />
+              <h3>James Vail</h3>
+              <p>Principal Advisor</p>
             </article>
-            <article class="quote">
-              <p>
-                "The buying plan was direct and calm. Every showing had context,
-                and every offer felt intentional."
-              </p>
-              <span>Arun Gill, Buyer</span>
+            <article class="agent-card reveal">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85"
+                alt="Portrait of Maren Cole"
+                width="620"
+                height="760"
+              />
+              <h3>Maren Cole</h3>
+              <p>Listing Lead</p>
             </article>
-            <article class="quote">
-              <p>
-                "Their valuation work helped us decide which property was worth
-                pursuing and which one to leave behind."
-              </p>
-              <span>Elena Park, Investor</span>
+            <article class="agent-card reveal">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85"
+                alt="Portrait of Jaxon Reed"
+                width="620"
+                height="760"
+              />
+              <h3>Jaxon Reed</h3>
+              <p>Buyer Strategy</p>
             </article>
-            <div class="slider-controls" aria-label="Testimonial controls">
-              <button type="button" data-slide="0" aria-label="Show first testimonial"></button>
-              <button type="button" data-slide="1" aria-label="Show second testimonial"></button>
-              <button type="button" data-slide="2" aria-label="Show third testimonial"></button>
-            </div>
           </div>
         </div>
       </section>
 
-      <section class="consult section-shell" id="contact">
-        <div class="consult-copy reveal">
-          <p class="section-kicker">[ Get Started ]</p>
-          <h2>Schedule a free property consultation.</h2>
+      <section class="testimonials panel-white" aria-label="Client testimonials">
+        <div class="quote-stage reveal" data-slider>
+          <article class="quote is-active">
+            <p>
+              "The team helped us compare each decision clearly and kept the
+              sale moving without confusion."
+            </p>
+            <span>Devon Clarke, Seller</span>
+          </article>
+          <article class="quote">
+            <p>
+              "Every home we saw had context. That made the final offer feel
+              measured instead of emotional."
+            </p>
+            <span>Mira Shah, Buyer</span>
+          </article>
+          <article class="quote">
+            <p>
+              "Their valuation notes gave us enough confidence to pass on the
+              wrong property and act on the right one."
+            </p>
+            <span>Leo Grant, Investor</span>
+          </article>
+          <div class="slider-controls" aria-label="Testimonial controls">
+            <button type="button" data-slide="0" aria-label="Show first testimonial"></button>
+            <button type="button" data-slide="1" aria-label="Show second testimonial"></button>
+            <button type="button" data-slide="2" aria-label="Show third testimonial"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="get-started" id="contact" data-dark-section>
+        <div class="get-started__media" data-parallax data-speed="-0.08" aria-hidden="true"></div>
+        <div class="get-started__content reveal">
+          <p class="section-label">[ GET STARTED FREE ]</p>
+          <h2>SCHEDULE A FREE CONSULTATION</h2>
           <p>
-            Bring your goals, timing, and questions. We will map the next best
-            move and the numbers behind it.
+            Share the move you are planning and we will map the next step, the
+            numbers, and the timeline behind it.
           </p>
+          <a class="hero-button" href="mailto:hello@doorly.example">
+            <span>CONTACT US</span>
+            <b aria-hidden="true">-&gt;</b>
+          </a>
         </div>
-        <form class="contact-form reveal" aria-label="Consultation form">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" autocomplete="name" required />
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" required />
-          </label>
-          <label>
-            <span>Goal</span>
-            <select name="goal" required>
-              <option value="">Select one</option>
-              <option>Buying</option>
-              <option>Selling</option>
-              <option>Investing</option>
-              <option>Leasing</option>
-            </select>
-          </label>
-          <button class="button-primary" type="submit">Request Call</button>
-        </form>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="section-shell footer-inner">
-        <a class="footer-brand" href="#top">DOORLY</a>
-        <p>Modern property guidance for buyers, sellers, and investors.</p>
-        <nav aria-label="Footer navigation">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#team">Team</a>
-          <a href="#contact">Contact</a>
-        </nav>
+    <footer class="footer-panel" data-dark-section>
+      <div>
+        <a href="#top">DOORLY</a>
+        <p>
+          Real estate guidance for buying, selling, leasing, valuation, and
+          property planning.
+        </p>
       </div>
+      <nav aria-label="Footer sections">
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <nav aria-label="Social links">
+        <a href="#top">Instagram</a>
+        <a href="#top">YouTube</a>
+        <a href="#top">LinkedIn</a>
+      </nav>
     </footer>
 
-    <div class="toast" role="status" aria-live="polite">Request received</div>
     <script src="./script.js"></script>
   </body>
 </html>

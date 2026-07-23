@@ -1,20 +1,81 @@
 const header = document.querySelector("[data-header]");
+const menu = document.querySelector("[data-menu]");
+const menuOpen = document.querySelector("[data-menu-open]");
+const menuClose = document.querySelector("[data-menu-close]");
+const menuLinks = document.querySelectorAll("[data-menu-link]");
+const hero = document.querySelector("[data-hero]");
+const heroTitle = document.querySelector("[data-hero-title]");
 const revealItems = document.querySelectorAll(".reveal");
 const counters = document.querySelectorAll("[data-count]");
-const floatingMedia = document.querySelector("[data-float]");
+const parallaxItems = document.querySelectorAll("[data-parallax]");
+const darkSections = document.querySelectorAll("[data-dark-section]");
 const slider = document.querySelector("[data-slider]");
 const quotes = slider ? Array.from(slider.querySelectorAll(".quote")) : [];
 const sliderButtons = slider ? Array.from(slider.querySelectorAll("[data-slide]")) : [];
-const form = document.querySelector(".contact-form");
-const toast = document.querySelector(".toast");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const setHeaderState = () => {
-  header?.classList.toggle("is-scrolled", window.scrollY > 12);
+const openMenu = () => {
+  menu?.classList.add("is-open");
+  menu?.setAttribute("aria-hidden", "false");
+  document.body.classList.add("menu-open");
 };
 
-setHeaderState();
-window.addEventListener("scroll", setHeaderState, { passive: true });
+const closeMenu = () => {
+  menu?.classList.remove("is-open");
+  menu?.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("menu-open");
+};
+
+menuOpen?.addEventListener("click", openMenu);
+menuClose?.addEventListener("click", closeMenu);
+menuLinks.forEach((link) => link.addEventListener("click", closeMenu));
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeMenu();
+  }
+});
+
+const updateScrollMotion = () => {
+  const scrollY = window.scrollY;
+  const heroHeight = hero?.offsetHeight || window.innerHeight;
+  const heroProgress = Math.min(scrollY / Math.max(heroHeight, 1), 1);
+  const headerProbeY = 42;
+  const isDarkSection = Array.from(darkSections).some((section) => {
+    const rect = section.getBoundingClientRect();
+    return rect.top <= headerProbeY && rect.bottom >= headerProbeY;
+  });
+
+  header?.classList.toggle("has-logo", scrollY > 80);
+  header?.classList.toggle("is-light", !isDarkSection);
+
+  if (heroTitle) {
+    heroTitle.style.setProperty("--hero-title-y", String(heroProgress * 150));
+  }
+
+  parallaxItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const speed = Number(item.dataset.speed || 0);
+    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+    item.style.setProperty("--parallax", String(centerOffset * speed));
+  });
+};
+
+let ticking = false;
+const requestScrollMotion = () => {
+  if (ticking || reducedMotion) {
+    return;
+  }
+
+  ticking = true;
+  requestAnimationFrame(() => {
+    updateScrollMotion();
+    ticking = false;
+  });
+};
+
+updateScrollMotion();
+window.addEventListener("scroll", requestScrollMotion, { passive: true });
+window.addEventListener("resize", updateScrollMotion);
 
 if (reducedMotion) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
@@ -26,7 +87,7 @@ if (reducedMotion) {
       }
 
       const rect = item.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+      if (rect.top < window.innerHeight * 0.88 && rect.bottom > 0) {
         item.classList.add("is-visible");
       }
     });
@@ -41,11 +102,11 @@ if (reducedMotion) {
         }
       });
     },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.01 },
+    { rootMargin: "0px 0px -10% 0px", threshold: 0.01 },
   );
 
   revealItems.forEach((item, index) => {
-    item.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+    item.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
     revealObserver.observe(item);
   });
 
@@ -56,7 +117,7 @@ if (reducedMotion) {
 
 const animateCounter = (counter) => {
   const target = Number(counter.dataset.count);
-  const duration = 1200;
+  const duration = 1100;
   const startTime = performance.now();
 
   const tick = (time) => {
@@ -81,26 +142,12 @@ const counterObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.6 },
+  { threshold: 0.55 },
 );
 
 counters.forEach((counter) => counterObserver.observe(counter));
 
-if (floatingMedia && !reducedMotion) {
-  floatingMedia.addEventListener("mousemove", (event) => {
-    const rect = floatingMedia.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    floatingMedia.style.transform = `translate3d(${x * 10}px, ${y * 10}px, 0)`;
-  });
-
-  floatingMedia.addEventListener("mouseleave", () => {
-    floatingMedia.style.transform = "translate3d(0, 0, 0)";
-  });
-}
-
 let currentQuote = 0;
-
 const showQuote = (index) => {
   currentQuote = index;
   quotes.forEach((quote, quoteIndex) => {
@@ -120,15 +167,6 @@ if (quotes.length) {
   });
 
   if (!reducedMotion) {
-    window.setInterval(() => {
-      showQuote((currentQuote + 1) % quotes.length);
-    }, 4200);
+    slider.addEventListener("mouseenter", () => showQuote((currentQuote + 1) % quotes.length));
   }
 }
-
-form?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  toast?.classList.add("is-visible");
-  form.reset();
-  window.setTimeout(() => toast?.classList.remove("is-visible"), 1800);
-});
