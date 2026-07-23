@@ -1,172 +1,131 @@
-const header = document.querySelector("[data-header]");
-const menu = document.querySelector("[data-menu]");
-const menuOpen = document.querySelector("[data-menu-open]");
-const menuClose = document.querySelector("[data-menu-close]");
-const menuLinks = document.querySelectorAll("[data-menu-link]");
-const hero = document.querySelector("[data-hero]");
-const heroTitle = document.querySelector('[data-scroll-h1="doorly"]');
-const revealItems = document.querySelectorAll(".reveal");
-const counters = document.querySelectorAll("[data-count]");
-const parallaxItems = document.querySelectorAll("[data-parallax]");
-const scaleScrollItems = document.querySelectorAll("[data-scale-scroll]");
-const imageParallaxItems = document.querySelectorAll("[data-img-parallax]");
-const darkSections = document.querySelectorAll("[data-dark-section]");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* Doorly home page interactions.
+   Extracted verbatim from the template's inline GSAP embeds:
+   1. hero -> navbar logo scroll-shrink   2. hero load-in timeline */
 
-const openMenu = () => {
-  menu?.classList.add("is-open");
-  menu?.setAttribute("aria-hidden", "false");
-  document.body.classList.add("menu-open");
-};
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+      console.warn('[doorly scroll-shrink] GSAP or ScrollTrigger not loaded. Enable both in Site Settings → GSAP integration.');
+      return;
+    }
 
-const closeMenu = () => {
-  menu?.classList.remove("is-open");
-  menu?.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("menu-open");
-};
+    gsap.registerPlugin(ScrollTrigger);
 
-menuOpen?.addEventListener("click", openMenu);
-menuClose?.addEventListener("click", closeMenu);
-menuLinks.forEach((link) => link.addEventListener("click", closeMenu));
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMenu();
-  }
-});
+    const h1      = document.querySelector('[data-scroll-h1="doorly"]');
+    const logo    = document.querySelector('[data-scroll-logo="doorly"]');
+    const section = document.querySelector('[data-scroll-trigger="doorly"]');
 
-const updateScrollMotion = () => {
-  const scrollY = window.scrollY;
-  const heroHeight = hero?.offsetHeight || window.innerHeight;
-  const heroProgress = Math.min(scrollY / Math.max(heroHeight, 1), 1);
-  const headerProbeY = 42;
-  const isDarkSection = Array.from(darkSections).some((section) => {
-    const rect = section.getBoundingClientRect();
-    return rect.top <= headerProbeY && rect.bottom >= headerProbeY;
+    if (!h1 || !logo || !section) {
+      console.warn('[doorly scroll-shrink] missing element', { h1, logo, section });
+      return;
+    }
+
+    // Restrict the animation to tablet + desktop. matchMedia handles teardown
+    // automatically when the viewport crosses below 768px.
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 768px)', () => {
+      gsap.set(h1, { transformOrigin: 'center center', force3D: true });
+
+      let targetX = 0;
+      let targetY = 0;
+      let targetScale = 1;
+
+      const measure = () => {
+        gsap.set(h1, { x: 0, y: 0, scale: 1 });
+        const h1Rect   = h1.getBoundingClientRect();
+        const logoRect = logo.getBoundingClientRect();
+        const sectionH = section.offsetHeight;
+
+        targetX     = (logoRect.left + logoRect.width / 2) - (h1Rect.left + h1Rect.width / 2);
+        const h1CY  = h1Rect.top + h1Rect.height / 2;
+        const logoCY = logoRect.top + logoRect.height / 2;
+        targetY     = logoCY - (h1CY - sectionH);
+        targetScale = logoRect.height / h1Rect.height;
+      };
+      measure();
+
+      const st = ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+        invalidateOnRefresh: true,
+        onRefresh: measure,
+        onUpdate(self) {
+          const p = self.progress;
+          gsap.set(h1, {
+            x: targetX * p,
+            y: targetY * p,
+            scale: 1 + (targetScale - 1) * p,
+          });
+        },
+        onLeave() {
+          gsap.set(h1,   { opacity: 0 });
+          gsap.set(logo, { opacity: 1 });
+        },
+        onEnterBack() {
+          gsap.set(h1,   { opacity: 1 });
+          gsap.set(logo, { opacity: 0 });
+        },
+      });
+
+      // Cleanup when leaving this breakpoint (e.g. resizing down to mobile).
+      return () => {
+        st.kill();
+        gsap.set(h1,   { clearProps: 'all' });
+        gsap.set(logo, { clearProps: 'all' });
+      };
+    });
   });
 
-  header?.classList.toggle("has-logo", scrollY > 80);
-  header?.classList.toggle("is-light", !isDarkSection);
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof gsap === 'undefined') {
+      console.warn('[doorly hero-load] GSAP not loaded. Enable it in Site Settings → GSAP integration.');
+      return;
+    }
 
-  if (heroTitle) {
-    const translateY = Math.round(heroProgress * 560 * 1000) / 1000;
-    const scale = Math.max(0.28, Math.round((1 - heroProgress * 0.86) * 10000) / 10000);
-    heroTitle.style.transform = heroProgress <= 0.001
-      ? "translate3d(0px, 0px, 0px)"
-      : `translate3d(0px, ${translateY}px, 0px) scale(${scale}, ${scale})`;
-    heroTitle.style.clipPath = "inset(0% 0px 0px)";
-  }
+    const mm = gsap.matchMedia();
 
-  parallaxItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    const speed = Number(item.dataset.speed || 0);
-    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-    item.style.setProperty("--parallax", String(Math.round(centerOffset * speed)));
-  });
+    mm.add('(min-width: 768px)', () => {
+      const nav      = document.querySelector('.nav');
+      const stripes  = document.querySelectorAll('.stripes_wrapper .stripes');
+      const bg       = document.querySelector('.section_home .home-background');
+      const gradient = document.querySelector('.section_home .hero_gradient');
+      const h1       = document.querySelector('.section_home .h1-huge');
+      const desc     = document.querySelector('.section_home .max-description');
+      const cta      = document.querySelector('.section_home .home_layout-content > div:last-child');
 
-  scaleScrollItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    const travel = window.innerHeight + rect.height;
-    const progress = Math.min(Math.max((window.innerHeight - rect.top) / Math.max(travel, 1), 0), 1);
-    const scale = Math.max(0.78, Math.round((0.98 - progress * 0.2) * 10000) / 10000);
-    item.style.transform = `translate3d(0px, 0px, 0px) scale(${scale}, ${scale})`;
-  });
-
-  imageParallaxItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    const speed = Number(item.dataset.speed || 0.03);
-    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
-    const rawTranslate = centerOffset * speed;
-    const translate = Math.round(Math.min(Math.max(rawTranslate, -12), 12) * 1000) / 1000;
-    item.style.transform = `translate3d(0px, ${translate}%, 0px) scale(1.08)`;
-  });
-};
-
-let ticking = false;
-const requestScrollMotion = () => {
-  if (ticking || reducedMotion) {
-    return;
-  }
-
-  ticking = true;
-  requestAnimationFrame(() => {
-    updateScrollMotion();
-    ticking = false;
-  });
-};
-
-updateScrollMotion();
-window.addEventListener("scroll", requestScrollMotion, { passive: true });
-window.addEventListener("resize", updateScrollMotion);
-
-if (reducedMotion) {
-  revealItems.forEach((item) => item.classList.add("is-visible"));
-} else {
-  const revealVisibleItems = () => {
-    const revealLine = window.scrollY + window.innerHeight * 0.84;
-
-    revealItems.forEach((item) => {
-      if (item.classList.contains("is-visible")) {
+      if (!nav || !stripes.length || !bg || !gradient || !h1 || !desc || !cta) {
+        console.warn('[doorly hero-load] missing element', { nav, stripes: stripes.length, bg, gradient, h1, desc, cta });
         return;
       }
 
-      const rect = item.getBoundingClientRect();
-      const itemTop = rect.top + window.scrollY;
-      if (itemTop < revealLine) {
-        item.classList.add("is-visible");
-      }
+      // Initial states (would normally be CSS; applied via GSAP so the embed
+      // stays within the "GSAP custom code" marketplace exception).
+      gsap.set(nav,      { opacity: 0, y: -60 });
+      gsap.set(stripes,  { scaleY: 0, transformOrigin: 'top' });
+      gsap.set(bg,       { scale: 1.12 });
+      gsap.set(gradient, { opacity: 0 });
+      gsap.set(h1,       { clipPath: 'inset(100% 0 0 0)' });
+      gsap.set(desc,     { opacity: 0, y: 24 });
+      gsap.set(cta,      { opacity: 0, y: 24 });
+
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+
+      tl
+        .to(nav,      { y: 0, opacity: 1, duration: 0.9 }, 0)
+        .to(stripes,  { scaleY: 1, duration: 1.0, stagger: 0.08, ease: 'power3.out' }, 0)
+        .to(bg,       { scale: 1, duration: 1.6, ease: 'power3.out' }, 0)
+        .to(gradient, { opacity: 1, duration: 1.2 }, 0.2)
+        .to(h1,       { clipPath: 'inset(0% 0 0 0)', duration: 1.1, ease: 'expo.out' }, 0.5)
+        .to(desc,     { y: 0, opacity: 1, duration: 0.8 }, 1.0)
+        .to(cta,      { y: 0, opacity: 1, duration: 0.8 }, 1.15);
+
+      // matchMedia cleanup: clear inline styles when resizing below 768px so
+      // the hero returns to its static template state on mobile.
+      return () => {
+        tl.kill();
+        gsap.set([nav, ...stripes, bg, gradient, h1, desc, cta], { clearProps: 'all' });
+      };
     });
-  };
-
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -10% 0px", threshold: 0.01 },
-  );
-
-  revealItems.forEach((item, index) => {
-    item.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
-    revealObserver.observe(item);
   });
-
-  revealVisibleItems();
-  window.addEventListener("scroll", revealVisibleItems, { passive: true });
-  window.addEventListener("resize", revealVisibleItems);
-}
-
-const animateCounter = (counter) => {
-  const target = Number(counter.dataset.count);
-  const duration = 1100;
-  const startTime = performance.now();
-
-  const tick = (time) => {
-    const progress = Math.min((time - startTime) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    counter.textContent = Math.round(target * eased);
-
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    }
-  };
-
-  requestAnimationFrame(tick);
-};
-
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.55 },
-);
-
-counters.forEach((counter) => counterObserver.observe(counter));
