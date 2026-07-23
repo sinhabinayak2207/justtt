@@ -8,10 +8,9 @@ const heroTitle = document.querySelector('[data-scroll-h1="doorly"]');
 const revealItems = document.querySelectorAll(".reveal");
 const counters = document.querySelectorAll("[data-count]");
 const parallaxItems = document.querySelectorAll("[data-parallax]");
+const scaleScrollItems = document.querySelectorAll("[data-scale-scroll]");
+const imageParallaxItems = document.querySelectorAll("[data-img-parallax]");
 const darkSections = document.querySelectorAll("[data-dark-section]");
-const slider = document.querySelector("[data-slider]");
-const quotes = slider ? Array.from(slider.querySelectorAll(".quote")) : [];
-const sliderButtons = slider ? Array.from(slider.querySelectorAll("[data-slide]")) : [];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const openMenu = () => {
@@ -62,6 +61,23 @@ const updateScrollMotion = () => {
     const speed = Number(item.dataset.speed || 0);
     const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
     item.style.setProperty("--parallax", String(Math.round(centerOffset * speed)));
+  });
+
+  scaleScrollItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const travel = window.innerHeight + rect.height;
+    const progress = Math.min(Math.max((window.innerHeight - rect.top) / Math.max(travel, 1), 0), 1);
+    const scale = Math.max(0.78, Math.round((0.98 - progress * 0.2) * 10000) / 10000);
+    item.style.transform = `translate3d(0px, 0px, 0px) scale(${scale}, ${scale})`;
+  });
+
+  imageParallaxItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const speed = Number(item.dataset.speed || 0.03);
+    const centerOffset = rect.top + rect.height / 2 - window.innerHeight / 2;
+    const rawTranslate = centerOffset * speed;
+    const translate = Math.round(Math.min(Math.max(rawTranslate, -12), 12) * 1000) / 1000;
+    item.style.transform = `translate3d(0px, ${translate}%, 0px) scale(1.08)`;
   });
 };
 
@@ -154,27 +170,3 @@ const counterObserver = new IntersectionObserver(
 );
 
 counters.forEach((counter) => counterObserver.observe(counter));
-
-let currentQuote = 0;
-const showQuote = (index) => {
-  currentQuote = index;
-  quotes.forEach((quote, quoteIndex) => {
-    quote.classList.toggle("is-active", quoteIndex === currentQuote);
-  });
-  sliderButtons.forEach((button, buttonIndex) => {
-    button.classList.toggle("is-active", buttonIndex === currentQuote);
-  });
-};
-
-if (quotes.length) {
-  showQuote(0);
-  sliderButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      showQuote(Number(button.dataset.slide));
-    });
-  });
-
-  if (!reducedMotion) {
-    slider.addEventListener("mouseenter", () => showQuote((currentQuote + 1) % quotes.length));
-  }
-}
