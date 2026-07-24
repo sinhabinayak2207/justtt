@@ -25,3 +25,18 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
   .member_info.is-solo{left:1rem;right:1rem;bottom:1rem}
   .member_solo-index{left:1rem;top:1rem}
 }
+
+/* --- founder portrait replaces the partner logo grid --- */
+.partners_list.is-founder{display:flex;justify-content:center;align-items:flex-end;grid-template-columns:none}
+.founder_img{width:100%;max-width:34rem;height:auto;aspect-ratio:1000/785;display:block;object-fit:contain}
+
+/* --- language switcher (top right of the navbar) --- */
+.lang_switch{position:absolute;right:1.25rem;top:50%;transform:translateY(-50%);z-index:1003;
+  display:flex;align-items:center;gap:.125rem}
+.lang_btn{-webkit-appearance:none;appearance:none;background:#0000;border:0;cursor:pointer;
+  padding:.35rem .55rem;color:#ffffffa6;font-family:inherit;font-size:var(--_sizes---fixed--regular);
+  line-height:1;text-transform:uppercase;letter-spacing:-.02rem;transition:color .2s ease}
+.lang_btn:hover{color:#fff}
+.lang_btn.is-active{color:var(--base--orange)}
+@media screen and (max-width:479px){.lang_switch{right:.5rem}.lang_btn{padding:.35rem .35rem}}
+
