@@ -48,6 +48,14 @@ rather than trusting a reload.
   interaction data.
 - The hero background is `assets/home-hero.jpg` (1600×900). It is upscaled on very wide
   displays; swap in a larger file if that shows.
+- Every other photo was replaced with an [Unsplash](https://unsplash.com) image (free to
+  use, no attribution required), each cropped to the ratio its slot expects — `sellers`
+  and `buyers` at 68%, `cta` at 127%, `member-*` at 125%, `avatar-*` square. If you swap
+  one, match the ratio or it will crop badly. These are single files with no `srcset`,
+  unlike the multi-rendition originals.
+- `assets/{about-hero-3,contact-bg-*,contact-one,get-started-bg,started-bg,talk-bg}.avif`
+  are referenced by CSS rules for pages that were never mirrored, so they never render
+  on this site. Left in place; safe to delete along with their rules.
 - This design originates from a commercial template sold via
   [temlis.com](https://www.temlis.com/). This copy is for personal/development use;
   buy a license before shipping it publicly.
