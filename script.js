@@ -126,3 +126,20 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     });
   });
+
+
+/* The elements added after the template's own interactions were baked (the two
+   services flank images and the single agent card) are not known to the runtime,
+   so give them an equivalent scroll reveal here. */
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  gsap.utils.toArray('[data-reveal]').forEach((el) => {
+    gsap.from(el, {
+      opacity: 0,
+      y: 48,
+      duration: 0.9,
+      ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+    });
+  });
+});
