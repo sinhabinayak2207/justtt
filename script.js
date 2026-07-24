@@ -134,12 +134,21 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.utils.toArray('[data-reveal]').forEach((el) => {
-    gsap.from(el, {
-      opacity: 0,
-      y: 48,
-      duration: 0.9,
-      ease: 'expo.out',
-      scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-    });
+    // fromTo with immediateRender:false, not from(): a .from() tween hides the element
+    // the moment it is created, so anything that stops ScrollTrigger from firing leaves
+    // the content permanently invisible. This way the element renders normally and only
+    // dips to its start state when the trigger actually runs.
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 48 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.9,
+        ease: 'expo.out',
+        immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+      }
+    );
   });
 });
