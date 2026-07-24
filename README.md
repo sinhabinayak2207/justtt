@@ -1,19 +1,17 @@
 # Doorly Real Estate
 
-A 1:1 mirror of the [Doorly template](https://doorly-template.webflow.io/) home page — same markup,
-stylesheet, interactions and assets as the original, served as a plain static site.
+A single-page real estate site, built from the Doorly template's home page and served as
+plain static files. Nothing loads from a CDN except the Plus Jakarta Sans webfont.
 
 ## Structure
 
-| Path         | What it is                                                                    |
-| ------------ | ----------------------------------------------------------------------------- |
-| `index.html` | The home page markup, unchanged from the source                               |
-| `styles.css` | The template's stylesheet, with `url()` references pointed at `assets/`       |
-| `script.js`  | The two GSAP embeds from the source: hero → navbar logo shrink, hero load-in  |
-| `js/`        | jQuery, the Webflow runtime (interactions engine), GSAP + ScrollTrigger + SplitText |
-| `assets/`    | Every image, icon and logo the page references                                |
-
-Nothing is loaded from a CDN except the Plus Jakarta Sans webfont.
+| Path         | What it is                                                                       |
+| ------------ | -------------------------------------------------------------------------------- |
+| `index.html` | The home page markup                                                             |
+| `styles.css` | The stylesheet, with `url()` references pointed at `assets/`                      |
+| `script.js`  | Two GSAP timelines: hero → navbar logo shrink, and the hero load-in               |
+| `js/`        | jQuery, the interactions runtime (`runtime.core.js` + `runtime.init.js`), GSAP + ScrollTrigger + SplitText |
+| `assets/`    | Every image, icon and logo the page references                                    |
 
 ## Run locally
 
@@ -22,7 +20,11 @@ python -m http.server 8000
 ```
 
 Then open <http://localhost:8000>. Opening `index.html` via `file://` will not work — the
-Webflow runtime needs a real HTTP origin.
+interactions runtime needs a real HTTP origin.
+
+Note that `python -m http.server` sends no `Cache-Control`, so browsers apply heuristic
+caching to `js/`. If an edit there seems to have no effect, serve on a different port
+rather than trusting a reload.
 
 ## Deploy on Vercel
 
@@ -32,12 +34,20 @@ Webflow runtime needs a real HTTP origin.
 
 ## Notes
 
-- Only the home page exists here. Remaining internal links point at `#`, since those pages
-  were not mirrored.
-- Removed from the original: the MENU trigger (and the dropdown panel it opened), the
-  "Buy Template" button, and the orange vertical rules overlaying the page. The navbar is
-  now just the centered logo — see the two rules at the bottom of `styles.css`.
-- The "Made in Webflow" badge the original injects is hidden — see the bottom of `styles.css`
-  to restore it.
-- Doorly is a commercial template sold via [temlis.com](https://www.temlis.com/). This copy is
-  for personal/development use; buy a license before shipping it publicly.
+- Only the home page exists. Remaining internal links point at `#`.
+- Removed from the original design: the MENU trigger (and its dropdown panel), the
+  "Buy Template" button, and the orange vertical rules. The navbar is now just the
+  centered logo — see the rules at the bottom of `styles.css`.
+- **De-branded.** The build carried the vendor's name through its markup, classes, ids,
+  metadata and runtime. That was renamed consistently — the `w-` class prefix is now
+  `dl-`, `data-wf-*` is `data-dl-*`, ids are `dl-node-*`, and the runtime globals were
+  renamed to match. Because it is a rename and not a deletion, the HTML, the stylesheet
+  and *both* runtime files have to agree; changing one alone silently breaks interactions.
+  The `wf:` strings still inside `js/runtime.*.js` are internal trigger identifiers — they
+  never reach the DOM, and renaming them desynchronises the trigger registry from the
+  interaction data.
+- The hero background is `assets/home-hero.jpg` (1600×900). It is upscaled on very wide
+  displays; swap in a larger file if that shows.
+- This design originates from a commercial template sold via
+  [temlis.com](https://www.temlis.com/). This copy is for personal/development use;
+  buy a license before shipping it publicly.
