@@ -15,10 +15,10 @@
 
   // Keyed by the exact English string as it appears in the markup.
   var T = {
-    'From family houses and luxury apartments to high-value investment properties—our team guides you through a seamless and transparent buying or selling experience.': {
-      hi: 'पारिवारिक घरों और लक्ज़री अपार्टमेंट से लेकर उच्च-मूल्य वाली निवेश संपत्तियों तक—हमारी टीम खरीद या बिक्री की पूरी प्रक्रिया में आपका सहज और पारदर्शी मार्गदर्शन करती है।',
-      gu: 'કૌટુંબિક ઘરો અને લક્ઝરી એપાર્ટમેન્ટથી લઈને ઉચ્ચ-મૂલ્યની રોકાણ મિલકતો સુધી—અમારી ટીમ ખરીદી કે વેચાણની સમગ્ર પ્રક્રિયામાં તમને સરળ અને પારદર્શક માર્ગદર્શન આપે છે.' },
-    'Contact Us': { hi: 'संपर्क करें', gu: 'સંપર્ક કરો' },
+    'I help families across Ontario buy their first home — with plain answers, hard negotiation, and the honesty to tell you when it is better to wait.': {
+      hi: 'मैं ओंटारियो भर के परिवारों को उनका पहला घर खरीदने में मदद करता हूँ — सीधे जवाब, सख़्त मोलभाव, और यह कहने की ईमानदारी के साथ कि कब रुकना बेहतर है।',
+      gu: 'હું ઓન્ટારિયોભરના પરિવારોને તેમનું પહેલું ઘર ખરીદવામાં મદદ કરું છું — સીધા જવાબ, મક્કમ સોદાબાજી, અને ક્યારે રાહ જોવી વધુ સારું છે તે કહેવાની પ્રામાણિકતા સાથે.' },
+    'Book a Call': { hi: 'कॉल बुक करें', gu: 'કૉલ બુક કરો' },
     '[ ABout Us ]': { hi: '[ हमारे बारे में ]', gu: '[ અમારા વિશે ]' },
     'We are a professional real estate agency dedicated to delivering exceptional service to buyers, sellers, and investors.': {
       hi: 'हम एक पेशेवर रियल एस्टेट एजेंसी हैं, जो खरीदारों, विक्रेताओं और निवेशकों को उत्कृष्ट सेवा देने के लिए समर्पित है।',
