@@ -1,21 +1,21 @@
-/* Doorly home page interactions.
+/* Rakesh home page interactions.
    Extracted verbatim from the template's inline GSAP embeds:
    1. hero -> navbar logo scroll-shrink   2. hero load-in timeline */
 
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      console.warn('[doorly scroll-shrink] GSAP or ScrollTrigger not loaded. Enable both in Site Settings → GSAP integration.');
+      console.warn('[rakesh scroll-shrink] GSAP or ScrollTrigger not loaded. Enable both in Site Settings → GSAP integration.');
       return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const h1      = document.querySelector('[data-scroll-h1="doorly"]');
-    const logo    = document.querySelector('[data-scroll-logo="doorly"]');
-    const section = document.querySelector('[data-scroll-trigger="doorly"]');
+    const h1      = document.querySelector('[data-scroll-h1="rakesh"]');
+    const logo    = document.querySelector('[data-scroll-logo="rakesh"]');
+    const section = document.querySelector('[data-scroll-trigger="rakesh"]');
 
     if (!h1 || !logo || !section) {
-      console.warn('[doorly scroll-shrink] missing element', { h1, logo, section });
+      console.warn('[rakesh scroll-shrink] missing element', { h1, logo, section });
       return;
     }
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof gsap === 'undefined') {
-      console.warn('[doorly hero-load] GSAP not loaded. Enable it in Site Settings → GSAP integration.');
+      console.warn('[rakesh hero-load] GSAP not loaded. Enable it in Site Settings → GSAP integration.');
       return;
     }
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const cta      = document.querySelector('.section_home .home_layout-content > div:last-child');
 
       if (!nav || !bg || !gradient || !h1 || !desc || !cta) {
-        console.warn('[doorly hero-load] missing element', { nav, bg, gradient, h1, desc, cta });
+        console.warn('[rakesh hero-load] missing element', { nav, bg, gradient, h1, desc, cta });
         return;
       }
 
