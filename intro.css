@@ -5,26 +5,24 @@
 }
 html.intro-lock,html.intro-lock body{overflow:hidden!important; height:100%;}
 #intro .intro__canvas{position:absolute; inset:0; width:100%; height:100%; display:block;}
-/* white-out flash that masks the globe -> map cut */
-#intro .intro__flash{
+/* thin atmospheric haze used for the focus-pull from globe to satellite (not a hard flash) */
+#intro .intro__haze{
   position:absolute; inset:0; pointer-events:none; opacity:0;
-  background:radial-gradient(circle at 50% 46%, #eaf2ff 0%, #cfe0ff 30%, #ffffff 62%, #ffffff 100%);
+  background:radial-gradient(120% 100% at 50% 46%, rgba(226,238,255,.85) 0%, rgba(200,222,255,.55) 45%, rgba(210,228,255,.15) 78%, transparent 100%);
+}
+/* satellite layer (image + overlay) — scaled/faded as one so pins stay registered */
+#intro .intro__sat{ position:absolute; inset:0; overflow:hidden; opacity:0; visibility:hidden; }
+#intro .intro__sat-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+#intro .intro__sat-ov{ position:absolute; inset:0; width:100%; height:100%; }
+#intro .intro__ontario-line{
+  fill:none; stroke:#ffd7a8; stroke-width:2.4; stroke-linejoin:round; stroke-linecap:round; opacity:0;
+  filter:drop-shadow(0 0 6px rgba(255,140,70,.7));
 }
 /* cinematic vignette + faint scanline grain, always on top of imagery */
 #intro .intro__vignette{
   position:absolute; inset:0; pointer-events:none;
   background:radial-gradient(120% 90% at 50% 50%, transparent 52%, rgba(0,0,0,.42) 86%, rgba(0,0,0,.72) 100%);
   mix-blend-mode:multiply;
-}
-#intro .intro__map{
-  position:absolute; inset:0; width:100%; height:100%; opacity:0; visibility:hidden;
-  padding:5vh 4vw;
-}
-#intro .intro__neighbors{ fill:rgba(120,150,190,.05); stroke:rgba(150,180,220,.22); stroke-width:1.4; opacity:0; }
-#intro .intro__ontario{
-  fill:rgba(255,107,65,.07); stroke:#ff6b41; stroke-width:2.6;
-  stroke-linejoin:round; stroke-linecap:round;
-  filter:drop-shadow(0 0 10px rgba(255,107,65,.45));
 }
 /* flag markers: a pole from the location up to a name banner */
 #intro .pin-inner{ opacity:0; }
