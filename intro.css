@@ -26,16 +26,21 @@ html.intro-lock,html.intro-lock body{overflow:hidden!important; height:100%;}
   stroke-linejoin:round; stroke-linecap:round;
   filter:drop-shadow(0 0 10px rgba(255,107,65,.45));
 }
+/* flag markers: a pole from the location up to a name banner */
 #intro .pin-inner{ opacity:0; }
 #intro .pin-dot{ fill:#ff6b41; stroke:#fff; stroke-width:1.5; }
 #intro .pin-dot.is-primary{ fill:#ffb03a; }
 #intro .pin-ring{ fill:none; stroke:#ff6b41; stroke-width:1.5; opacity:0; }
-#intro .pin-stem{ stroke:rgba(255,255,255,.5); stroke-width:1; }
-#intro .pin-label{
-  fill:var(--ink); font-family:'Plus Jakarta Sans',sans-serif; font-weight:600;
-  font-size:15px; opacity:0; paint-order:stroke; stroke:rgba(5,7,13,.85); stroke-width:3px;
+#intro .pin-pole{ stroke:#ff6b41; stroke-width:1.6; }
+#intro .pin-banner{
+  fill:rgba(9,13,22,.94); stroke:#ff6b41; stroke-width:1.4;
+  filter:drop-shadow(0 3px 8px rgba(0,0,0,.45));
 }
-#intro .pin-label.is-primary{ font-size:22px; fill:#fff; }
+#intro .pin-banner.is-primary{ fill:#ff6b41; stroke:#ff6b41; }
+#intro .pin-flag-label{
+  fill:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; letter-spacing:.01em;
+}
+#intro .pin-flag-label.is-primary{ fill:#141414; font-weight:700; }
 /* captions */
 #intro .intro__caption{
   position:absolute; left:0; right:0; top:50%; transform:translateY(-50%);
