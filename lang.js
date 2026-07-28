@@ -42,7 +42,6 @@
     'You can rely on us for a smooth experience and results you can trust.': {
       hi: 'सहज अनुभव और भरोसेमंद परिणामों के लिए आप हम पर भरोसा कर सकते हैं।',
       gu: 'સરળ અનુભવ અને વિશ્વસનીય પરિણામો માટે તમે અમારા પર ભરોસો રાખી શકો છો.' },
-    '[ Services ]': { hi: '[ सेवाएँ ]', gu: '[ સેવાઓ ]' },
     'How I Actually Help': { hi: 'मैं असल में कैसे मदद करता हूँ', gu: 'હું ખરેખર કેવી રીતે મદદ કરું છું' },
     'First Home, Start to Finish': { hi: 'पहला घर, शुरू से आख़िर तक', gu: 'પહેલું ઘર, શરૂઆતથી અંત સુધી' },
     'If you have never bought before, I walk you through every step in plain language, from what you can afford to the day you get the keys. No jargon, no rushing, no dumb questions.': {
