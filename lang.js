@@ -60,13 +60,6 @@
     'A free, no-pressure call where I look at your real numbers and tell you the truth, including whether you should wait. Sometimes the smartest move is not to buy yet, and I will tell you so.': {
       hi: 'एक मुफ़्त, बिना किसी दबाव वाली कॉल जिसमें मैं आपके असली आंकड़े देखता हूँ और आपको सच बताता हूँ, यह भी कि क्या आपको रुकना चाहिए। कभी-कभी सबसे समझदारी भरा कदम अभी न खरीदना होता है, और मैं आपको यह बता दूँगा।',
       gu: 'એક મફત, દબાણ વગરની કૉલ જેમાં હું તમારા વાસ્તવિક આંકડા જોઉં છું અને તમને સાચું કહું છું, જેમાં એ પણ સામેલ છે કે તમારે રાહ જોવી જોઈએ કે નહીં. ક્યારેક સૌથી સમજદારીભર્યું પગલું હમણાં ન ખરીદવાનું હોય છે, અને હું તમને એ કહી દઈશ.' },
-    'Leading the market with a client-first focus': {
-      hi: 'ग्राहक-प्रथम सोच के साथ बाज़ार में अग्रणी',
-      gu: 'ગ્રાહક-પ્રથમ અભિગમ સાથે બજારમાં અગ્રેસર' },
-    'We craft inspiring spaces that blend cutting-edge design': {
-      hi: 'हम प्रेरणादायक स्थान बनाते हैं जो अत्याधुनिक डिज़ाइन को जोड़ते हैं',
-      gu: 'અમે પ્રેરણાદાયી જગ્યાઓ બનાવીએ છીએ જે અત્યાધુનિક ડિઝાઇનને જોડે છે' },
-    'CONTACT': { hi: 'संपर्क', gu: 'સંપર્ક' },
     '[ FOR buyers ]': { hi: '[ खरीदारों के लिए ]', gu: '[ ખરીદદારો માટે ]' },
     "Finding the right home should be an exciting and informed experience. Whether you're a first-time buyer or searching for your next investment property, we guide you through every step with clarity and confidence.": {
       hi: 'सही घर ढूँढना एक रोमांचक और जानकारीपूर्ण अनुभव होना चाहिए। चाहे आप पहली बार खरीद रहे हों या अपनी अगली निवेश संपत्ति खोज रहे हों, हम हर कदम पर स्पष्टता और आत्मविश्वास के साथ आपका मार्गदर्शन करते हैं।',
