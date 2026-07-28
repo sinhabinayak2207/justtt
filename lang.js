@@ -15,9 +15,9 @@
 
   // Keyed by the exact English string as it appears in the markup.
   var T = {
-    'I help families across Ontario buy their first home — with plain answers, hard negotiation, and the honesty to tell you when it is better to wait.': {
-      hi: 'मैं ओंटारियो भर के परिवारों को उनका पहला घर खरीदने में मदद करता हूँ — सीधे जवाब, सख़्त मोलभाव, और यह कहने की ईमानदारी के साथ कि कब रुकना बेहतर है।',
-      gu: 'હું ઓન્ટારિયોભરના પરિવારોને તેમનું પહેલું ઘર ખરીદવામાં મદદ કરું છું — સીધા જવાબ, મક્કમ સોદાબાજી, અને ક્યારે રાહ જોવી વધુ સારું છે તે કહેવાની પ્રામાણિકતા સાથે.' },
+    'Most realtors only know how to say buy. I will tell you to wait when waiting is right — and negotiate like hell when it isn\'t.': {
+      hi: 'ज़्यादातर रियलटर सिर्फ़ "खरीदो" कहना जानते हैं। मैं आपको तब रुकने के लिए कहूँगा जब रुकना सही हो — और जब सही न हो, तब जी-जान से मोलभाव करूँगा।',
+      gu: 'મોટાભાગના રિયલ્ટર્સ ફક્ત "ખરીદો" કહેવાનું જ જાણે છે. જ્યારે રાહ જોવી યોગ્ય હોય ત્યારે હું તમને રાહ જોવાનું કહીશ — અને જ્યારે ન હોય, ત્યારે સખત મોલભાવ કરીશ.' },
     'Book a Call': { hi: 'कॉल बुक करें', gu: 'કૉલ બુક કરો' },
     '[ ABout Us ]': { hi: '[ हमारे बारे में ]', gu: '[ અમારા વિશે ]' },
     'We are a professional real estate agency dedicated to delivering exceptional service to buyers, sellers, and investors.': {
