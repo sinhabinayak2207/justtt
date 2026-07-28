@@ -27,7 +27,7 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
 }
 
 /* --- founder portrait replaces the partner logo grid --- */
-.partners_list.is-founder{display:flex;justify-content:center;align-items:flex-end;grid-template-columns:none}
+.partners_list.is-founder{display:flex;justify-content:center;align-items:flex-start;grid-template-columns:none}
 .founder_img{width:100%;max-width:34rem;height:auto;aspect-ratio:1375/1080;display:block;object-fit:cover}
 
 /* --- language switcher (top right of the navbar) --- */
