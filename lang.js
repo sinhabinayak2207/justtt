@@ -63,12 +63,6 @@
     "Finding the right home should be an exciting and informed experience. Whether you're a first-time buyer or searching for your next investment property, we guide you through every step with clarity and confidence.": {
       hi: 'सही घर ढूँढना एक रोमांचक और जानकारीपूर्ण अनुभव होना चाहिए। चाहे आप पहली बार खरीद रहे हों या अपनी अगली निवेश संपत्ति खोज रहे हों, हम हर कदम पर स्पष्टता और आत्मविश्वास के साथ आपका मार्गदर्शन करते हैं।',
       gu: 'યોગ્ય ઘર શોધવું એ રોમાંચક અને માહિતીસભર અનુભવ હોવો જોઈએ. તમે પ્રથમ વખતના ખરીદદાર હો કે તમારી આગામી રોકાણ મિલકત શોધી રહ્યા હો, અમે દરેક પગલે સ્પષ્ટતા અને આત્મવિશ્વાસ સાથે માર્ગદર્શન આપીએ છીએ.' },
-    '[ Our team ]': { hi: '[ हमारी टीम ]', gu: '[ અમારી ટીમ ]' },
-    'Agents who go further for you.': {
-      hi: 'आपके लिए एक कदम आगे बढ़ने वाले एजेंट।',
-      gu: 'તમારા માટે એક ડગલું આગળ વધનારા એજન્ટ.' },
-    'Learn more': { hi: 'और जानें', gu: 'વધુ જાણો' },
-    'CEO & Principal Broker': { hi: 'सीईओ एवं प्रधान ब्रोकर', gu: 'સીઈઓ અને મુખ્ય બ્રોકર' },
     '“We have had two great experiences working with Realty Group, as they sold two of our homes. They were professional, attentive, and patient.”': {
       hi: '“रियल्टी ग्रुप के साथ हमारे दो शानदार अनुभव रहे, उन्होंने हमारे दो घर बेचे। वे पेशेवर, चौकस और धैर्यवान थे।”',
       gu: '“રિયલ્ટી ગ્રુપ સાથે અમારા બે ઉત્તમ અનુભવ રહ્યા, તેમણે અમારાં બે ઘર વેચ્યાં. તેઓ વ્યાવસાયિક, ધ્યાનપૂર્વક અને ધીરજવાન હતા.”' },
