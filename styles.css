@@ -145,3 +145,11 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
   object-position: 50% 30%;
   min-height: 26rem;
 }
+
+/* ============================================================
+   Global readability: the template sets body letter-spacing to
+   -.03rem which shrinks the space between words and makes copy
+   look run-together. Add a small word-spacing so words breathe
+   across the whole site (headings keep their own tracking).
+   ============================================================ */
+body { word-spacing: .14em; }
