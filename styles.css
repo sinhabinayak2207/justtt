@@ -49,3 +49,129 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
 /* --- wordmark: inline SVG text, so it uses the page font instead of fixed artwork --- */
 .footer_wordmark{position:absolute;inset:0;width:100%;height:100%;color:#fff;display:block}
 .logo_visual{display:block;height:auto;color:#fff}
+
+/* ============================================================
+   Certifications section  (added after the About section)
+   Self-contained; uses the site's colour + size tokens so it
+   matches. Cards reveal via [data-reveal] handled in script.js.
+   ============================================================ */
+.section_certs { background-color: var(--bg-color--bg-subtle); }
+.certs_head { text-align: center; }
+.certs_tag {
+  display: inline-block;
+  margin: 0 auto var(--_sizes---fixed--medium);
+  padding: .4rem 1rem;
+  background-color: var(--base--orange);
+  color: var(--grey--grey-900);
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .06em;
+  border-radius: 2rem;
+}
+.certs_head .max-heading { text-align: center; }
+.certs_sub {
+  max-width: 42rem;
+  margin: 1.25rem auto 0;
+  color: var(--grey--grey-500);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.certs_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.certs_card {
+  display: flex;
+  flex-direction: column;
+  background: var(--base--white, #fff);
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.certs_card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(10, 10, 10, .12);
+  border-color: var(--base--orange);
+}
+.certs_thumb { background: #fff; padding: 1rem 1rem 0; }
+.certs_thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: .5rem;
+  border: 1px solid #f0f0f0;
+}
+.certs_body {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  flex: 1;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.certs_issuer {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .78rem;
+  color: var(--grey--grey-500);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.certs_seal {
+  background: #27ae82;
+  color: #fff;
+  font-weight: 700;
+  font-size: .7rem;
+  padding: .18rem .5rem;
+  border-radius: .3rem;
+  letter-spacing: .02em;
+}
+.certs_title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--grey--grey-900);
+}
+.certs_meta { font-size: .9rem; color: var(--grey--grey-500); line-height: 1.5; }
+.certs_view {
+  margin-top: auto;
+  padding-top: .5rem;
+  font-weight: 600;
+  font-size: .95rem;
+  color: var(--base--orange);
+}
+.certs_view span { display: inline-block; transition: transform .25s ease; }
+.certs_card:hover .certs_view span { transform: translateX(4px); }
+
+.certs_more { margin-top: 3rem; text-align: center; }
+.certs_more-label {
+  font-size: .8rem;
+  letter-spacing: .08em;
+  color: var(--grey--grey-500);
+  margin-bottom: 1rem;
+}
+.certs_chips { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+.certs_chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .55rem 1.1rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 2rem;
+  text-decoration: none;
+  color: var(--grey--grey-900);
+  font-weight: 500;
+  font-size: .95rem;
+  transition: border-color .25s ease, color .25s ease;
+}
+.certs_chip span { color: var(--base--orange); font-weight: 700; }
+.certs_chip:hover { border-color: var(--base--orange); color: var(--base--orange); }
+
+@media (max-width: 991px) { .certs_grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .certs_grid { grid-template-columns: 1fr; } }
