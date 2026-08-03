@@ -125,3 +125,23 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
   .certs_grid { grid-template-columns: 1fr; }
   .section_certs { background-attachment: scroll; }
 }
+
+/* ============================================================
+   About section polish: make the founder photo fill its column
+   so it runs parallel (top + bottom aligned) with the text block,
+   instead of sitting short and top-aligned. Scoped to .section_about
+   (founder_img is only used here).
+   ============================================================ */
+.section_about .partners_list.is-founder {
+  align-items: stretch;
+  padding-top: 0;
+}
+.section_about .founder_img {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: 50% 30%;
+  min-height: 26rem;
+}
