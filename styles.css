@@ -187,3 +187,56 @@ body { word-spacing: .14em; }
   .section_buyers .buyers_layout { grid-template-columns: 1fr; gap: 2rem; }
   .section_buyers .buyers_grid { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Mobile friendliness (<= 767px)
+   ============================================================ */
+@media (max-width: 767px) {
+  /* Hero: the white "RAKESH" headline sits over bright sky on phones.
+     Darken the upper hero so it stays legible; fades out before the
+     lower text/CTA so those are untouched. */
+  .section_home .home-background::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+      rgba(10, 10, 10, .5) 0%,
+      rgba(10, 10, 10, .22) 42%,
+      rgba(10, 10, 10, 0) 68%);
+  }
+
+  /* Buyers: stacked content was touching the screen edges (0 padding) */
+  /* Guarantee the white hero headline stays readable over any part of the photo */
+  .section_home .h1-huge { text-shadow: 0 2px 20px rgba(0, 0, 0, .55), 0 1px 3px rgba(0, 0, 0, .5); }
+
+  .section_buyers .buyers_layout {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Justified body copy looks gappy on narrow screens — left-align it */
+  .section_about .heading-large[style*="justify"],
+  .section_buyers .buyers_content .heading-large {
+    text-align: left !important;
+  }
+}
+
+/* Testimonials: the desktop collage is a 4-col grid with inline grid-area
+   placement (can't collapse via normal CSS), so on phones it squeezes the
+   video cards to ~90px. Stack them full-width instead. */
+@media (max-width: 767px) {
+  .section_testimonial .testimonial_layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.25rem !important;
+    min-height: 0 !important;
+  }
+  .section_testimonial .testimonial_card-wrapper {
+    grid-area: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 3 / 4;
+  }
+}
