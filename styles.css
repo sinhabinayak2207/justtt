@@ -153,3 +153,37 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
    across the whole site (headings keep their own tracking).
    ============================================================ */
 body { word-spacing: .14em; }
+
+/* ============================================================
+   Buyers section relayout: text + the three [1..3] points stack
+   in the LEFT column; the photo sits in the RIGHT column, pushed
+   to the far edge and running parallel to the whole left block.
+   Removes the old full-width row + big spacer between them.
+   ============================================================ */
+.section_buyers .buyers_layout {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 3rem;
+  align-items: center;
+}
+.section_buyers .buyers_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+/* three points in one line beneath the text */
+.section_buyers .buyers_grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1.25rem;
+  grid-row-gap: 1.25rem;
+}
+.section_buyers .buyers_grid .sellers_item {
+  padding-left: 0;
+  padding-right: 0;
+}
+.section_buyers .buyers_img { width: 100%; justify-self: end; }
+
+@media (max-width: 767px) {
+  .section_buyers .buyers_layout { grid-template-columns: 1fr; gap: 2rem; }
+  .section_buyers .buyers_grid { grid-template-columns: 1fr; }
+}
